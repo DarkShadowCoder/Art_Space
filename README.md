@@ -17,3 +17,10 @@ Ce ci fait l'objet d'un devoir du cours de <strong>d'Atelier de Developpement Mo
   <img src="docs/visuel2.jpg" alt="visuel 2" width="250px"/>
   <img src="docs/visuel3.jpg" alt="visuel 3" width="250px"/>
 </div>
+
+#### Equipe
+<ul>
+  <li>MBOHOU MOUNPOU YVAN LANDRY    20G00235</li>
+  <li>NDOP-MFONKOUA DIVA PAMELA    20G00384</li>
+  <li>MFONKOA ZAMBOU EMMANUEL      20G002</li>
+</ul>
