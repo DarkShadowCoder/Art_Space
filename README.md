@@ -16,6 +16,7 @@ Ce ci fait l'objet d'un devoir du cours de <strong>d'Atelier de Developpement Mo
   <img src="docs/visuel1.jpg" alt="visuel 1" width="250px" style="margin:20px"/>
   <img src="docs/visuel2.jpg" alt="visuel 2" width="250px"/>
   <img src="docs/visuel3.jpg" alt="visuel 3" width="250px"/>
+  <img src="docs/visuel4.jpg" alt="visuel 4" width="250px"/>
 </div>
 
 #### Equipe
