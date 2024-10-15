@@ -61,21 +61,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun ArtSpaceApp(){
-
-}
-
 
 @Composable
 fun ArtSpaceCard(items: List<Item>,
                  modifier: Modifier = Modifier){
-
+    // Varible de gestion des état
     var currentIndex by remember { mutableStateOf(0) }
 
     val currentItem = items[currentIndex]
 
-    var scrollState = rememberScrollState()
+    // Variable permettant de controller l'etat du scroll
+    val scrollState = rememberScrollState()
 
     Column(
         modifier = modifier
@@ -164,11 +160,13 @@ fun ArtSpaceCard(items: List<Item>,
 @Preview(showBackground = true)
 @Composable
 fun ArtSpacePreview(){
+    // Liste des elements à afficher à chaque changement d'états
     val items = listOf(
         Item(R.drawable.mona_lisa, "Mona Lisa", "Leonard de Vinci, Oeuvre d'art le plus reconue"),
         Item(R.drawable.last_supper, "La Cène", "Leonard de Vinci, 1495-1498"),
         Item(R.drawable.starry_night, "Nuit étoilée", "Van Gogh, 1889, Musée d'art New York")
     )
+    
     DevMobileTheme {
         ArtSpaceCard(items)
     }
