@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -73,9 +75,12 @@ fun ArtSpaceCard(items: List<Item>,
 
     val currentItem = items[currentIndex]
 
+    var scrollState = rememberScrollState()
+
     Column(
         modifier = modifier
             .fillMaxSize()
+            .verticalScroll(scrollState)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween) {
@@ -108,7 +113,10 @@ fun ArtSpaceCard(items: List<Item>,
 
         }
 
-        Image(painter = painterResource(id = currentItem.imageRes), contentDescription = currentItem.title, modifier = modifier.width(800.dp).height(400.dp).shadow(3.dp, shape = RoundedCornerShape(16.dp)))
+        Image(painter = painterResource(id = currentItem.imageRes), contentDescription = currentItem.title, modifier = modifier
+            .width(800.dp)
+            .height(400.dp)
+            .shadow(3.dp, shape = RoundedCornerShape(16.dp)))
 
         Row(
             modifier = modifier
