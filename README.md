@@ -3,7 +3,7 @@
 Projet Scolaire de conception d'une Application de mobile de visualisation et de navigation à travers les informations d'art inserer dans la plateforme.
 Ce ci fait l'objet d'un devoir du cours de <strong>d'Atelier de Developpement Mobile</strong> dispensé par <a href="https://github.com/giressesama237">M. HYOUBISSIE </a>
 
-<img alt="Static Badge" src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=kotlin&logoColor=white">
+
 #### Etape de la conception
 <ol>
   <li>Creation d'une UI statique avec des composable</li>
