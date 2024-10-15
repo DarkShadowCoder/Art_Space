@@ -3,8 +3,11 @@ package com.example.devmobile
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -74,26 +79,37 @@ fun ArtSpaceCard(items: List<Item>,
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween) {
-        Image(painter = painterResource(id = currentItem.imageRes), contentDescription = currentItem.title, modifier = modifier.width(800.dp).height(100.dp))
 
-        Column(
+        Card(
             modifier = modifier
-                .height(56.dp)
-                .shadow(4.dp, clip = false, ambientColor = Color.Blue, spotColor = Color.Blue)
+                .height(78.dp)
+                .padding(5.dp)
                 .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            border = BorderStroke(1.dp, Color.Gray),
+            shape = RoundedCornerShape(16.dp),
+
         ) {
-            Text(
-                text = currentItem.title,
-                style = MaterialTheme.typography.titleLarge
-            )
-            Text(
-                text = currentItem.description,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Normal
-            )
+            Column(
+                modifier = modifier
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                Text(
+                    text = currentItem.title,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = currentItem.description,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Normal
+                )
+            }
+
         }
+
+        Image(painter = painterResource(id = currentItem.imageRes), contentDescription = currentItem.title, modifier = modifier.width(800.dp).height(400.dp).shadow(3.dp, shape = RoundedCornerShape(16.dp)))
+
         Row(
             modifier = modifier
                 .height(76.dp)
