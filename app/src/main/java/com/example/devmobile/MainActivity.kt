@@ -46,159 +46,15 @@ import com.example.devmobile.ui.theme.DevMobileTheme
 data class Item(val imageRes: Int, val title: String, val description: String)
 
 class MainActivity : ComponentActivity() {
-    private val items = listOf(
-        Item(R.drawable.mona_lisa, "Mona Lisa", "Leonard de Vinci, Oeuvre d'art le plus reconue au monde"),
-        Item(R.drawable.last_supper, "La Cène", "Leonard de Vinci, 1495-1498"),
-        Item(R.drawable.starry_night, "Nuit étoilée", "Van Gogh, 1889, Musée d'art New York")
-    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DevMobileTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    ArtSpacePreview()
                 }
             }
         }
     }
 }
 
-
-@Composable
-fun ArtSpaceCard(items: List<Item>,
-                 modifier: Modifier = Modifier){
-    // Varible de gestion des état
-    var currentIndex by remember { mutableStateOf(0) }
-
-    val currentItem = items[currentIndex]
-
-    // Variable permettant de controller l'etat du scroll
-    val scrollState = rememberScrollState()
-
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(scrollState),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween) {
-        Box (
-            modifier = modifier
-                .height(78.dp)
-                .shadow(2.dp)
-                .fillMaxWidth(),
-            contentAlignment = Alignment.Center,
-
-        ) {
-            Text(text = "Art Space (${currentIndex+1}/4)",
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold)
-        }
-
-        Column(modifier = modifier.fillMaxSize().padding(16.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
-            Image(
-                painter = painterResource(id = currentItem.imageRes),
-                contentDescription = currentItem.title,
-                modifier = modifier
-                    .width(800.dp)
-                    .height(400.dp)
-                    .padding(5.dp)
-                    .shadow(3.dp, shape = RoundedCornerShape(16.dp)),
-                alignment = Alignment.Center,
-                contentScale = ContentScale.FillHeight
-            )
-            Spacer(modifier = modifier.height(45.dp).fillMaxWidth())
-            Card(
-                modifier = modifier
-                    .height(98.dp)
-                    .padding(5.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(5.dp),
-                ) {
-                Column(
-                    modifier = modifier
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = currentItem.title,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = modifier.padding(vertical = 5.dp)
-                    )
-                    Text(
-                        text = currentItem.description,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Normal
-                    )
-                }
-            }
-        }
-
-            Row(
-                modifier = modifier
-                    .height(76.dp)
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-
-                Button(
-                    modifier = modifier
-                        .height(45.dp)
-                        .width(145.dp),
-                    onClick = {
-                        currentIndex = if (currentIndex > 0) currentIndex - 1 else items.size - 1
-                    }
-                ) {
-                    Text(
-                        text = "Previous",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(255, 255, 245, 255)
-                    )
-
-                }
-
-                Button(
-                    modifier = modifier
-                        .height(45.dp)
-                        .width(145.dp),
-                    onClick = { currentIndex = (currentIndex + 1) % items.size }
-                ) {
-                    Text(
-                        text = "Next",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(255, 255, 255, 255)
-                    )
-
-                }
-            }
-
-
-    }
-
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ArtSpacePreview(){
-    // Liste des elements à afficher à chaque changement d'états
-    val items = listOf(
-        Item(R.drawable.reunification, "Reunification", "Celebre monument situé à Yaoundé"),
-        Item(R.drawable.yaounde_cameroon, "Monument du Cameroun", "Sous le nom de ' J'aime mon pays' "),
-        Item(R.drawable.pagode, "Pagoda", "Monument celebre de Thailand"),
-        Item(R.drawable.chute_melong, "Chute de Melong", "Celebre chute de la ville de Melong Cameroun")
-    )
-    
-    DevMobileTheme {
-        ArtSpaceCard(items)
-    }
-}
